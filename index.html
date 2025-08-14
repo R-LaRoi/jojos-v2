@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jojo Pepper Sauce</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-[#fdfaf2]">
+    <nav class="fixed top-10 w-full z-50 bg-transparent">
+      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-6">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="nav-item text-xl font-bold" style="color: #8b0304">
+              ✸ JOJO'S
+            </div>
+          </div>
+
+          <div class="hidden md:block">
+            <div
+              class="flex items-center space-x-1 bg-white/80 backdrop-blur-sm rounded-full px-2 py-1">
+              <a
+                href="#home"
+                class="nav-item text-white px-6 py-2 rounded-full text-sm font-medium"
+                style="background-color: #8b0304"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="nav-item px-6 py-2 rounded-full text-sm font-medium hover:bg-red-50 transition-colors"
+                style="color: #8b0304"
+                >About</a
+              >
+
+              <a
+                href="#shop"
+                class="nav-item px-6 py-2 rounded-full text-sm font-medium hover:bg-red-50 transition-colors"
+                style="color: #8b0304"
+                >Shop</a
+              >
+              <a
+                href="#contact"
+                class="nav-item px-6 py-2 rounded-full text-sm font-medium hover:bg-red-50 transition-colors"
+                style="color: #8b0304"
+                >Contact</a
+              >
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <div class="nav-item text-sm font-medium" style="color: #8b0304">
+              +1 123 456 789
+            </div>
+            <button
+              id="cart-toggle"
+              class="nav-item relative font-medium hover:text-red-600 transition-colors flex items-center space-x-1"
+              style="color: #8b0304">
+              <span class="text-sm">Cart</span>
+              <span
+                id="cart-count"
+                class="text-white text-xs rounded-full w-5 h-5 flex items-center justify-center ml-1"
+                style="background-color: #8b0304"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+            <!-- cart -->
+    <div
+      id="cart-overlay"
+      class="overlay fixed inset-0 bg-opacity-50 z-40"></div>
+    <div
+      id="cart-sidebar"
+      class="cart-sidebar fixed right-0 top-0 h-full w-80 bg-white dark:bg-gray-800 shadow-xl z-50 p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-lg font-semibold">Your Cart</h3>
+        <button id="cart-close" class="text-gray-500 hover:text-gray-700">
+          ✕
+        </button>
+      </div>
+
+      <div id="cart-items" class="space-y-4 mb-6">
+        <p class="text-gray-500 text-center py-8">No items found.</p>
+      </div>
+
+      <div class="border-t pt-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-semibold">Subtotal:</span>
+          <span id="cart-total" class="font-semibold">$0.00 USD</span>
+        </div>
+        <button
+          class="w-full bg-amber-700 text-white py-3 rounded-lg hover:bg-amber-800 transition-colors">
+          Continue to Checkout
+        </button>
+      </div>
+    </div>
+<!-- hero section -->
+    <section id="home" class="hero-bg">
+      <div class="page-container">
+   
+        <div class="hero-container min-h-[50vh] flex items-end ">
+          <div
+            class="content-wrapper w-full p-8 flex flex-col justify-between items-start"
+          >
+            <div class="mb-20 justify-center items-center flex">
+              <h1
+                id="kreme-title"
+                class="font-black text-6xl md:text-8xl"
+                style="color: #8b0304"
+              >
+                <span class="letter">J</span>
+                <span class="letter">O</span>
+                <span class="letter">J</span>
+                <span class="letter">O</span>
+                <span class="letter">S</span>
+              </h1>
+            </div>
+        
+            <div
+              class="flex flex-col md:flex-row justify-between w-full items-start md:items-end text-left space-y-6 md:space-y-0"
+            >
+              <div class="hero-text max-w-xs">
+                <p class="text-md md:text-lg
+                 font-medium" style="color: #8b0304">
+                  Authenticity is key. Everything we do starts with why.
+                </p>
+              </div>
+        
+              <div class="hero-text text-right max-w-xs">
+                <p class="text-md md:text-lg font-medium" style="color: #8b0304">
+                  Fired up & Ready!<br />
+                  Real people making great products.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section two -->
+
+    <section class="about-home" style="background-color: #fdfaf2">
+      <div class="page-container height-100">
+        <div class="content height-100">
+          <div class="image-wrapper">
+            <div class="loading-overlay">
+              <div class="color-overlay"></div>
+            </div>
+            
+            <div class="dark-gradient"></div>
+            
+            <video
+              class="image"
+              src="https://res.cloudinary.com/dhdg91mxn/video/upload/v1755114561/jojosfierysauce.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              style="object-fit: cover; object-position: center;">
+            </video>
+            
+            <!-- Add centered text -->
+            <div class="video-text-overlay">
+              <h2 class="video-title">JOJO YOUR FLAVOR</h2>
+            </div>
+            
+            <div class="list-hours desktop">
+              <div class="tag-hour-1 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Monday</div>
+                    <div>CLOSED</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-2 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Tuesday</div>
+                    <div>06:00 to 16:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-3 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Wednesday</div>
+                    <div>06:00 to 16:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-4 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Thursday</div>
+                    <div>06:00 to 16:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-5 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Friday</div>
+                    <div>06:00 to 16:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-6 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Saturday</div>
+                    <div>06:00 to 16:00</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tag-hour-7 desktop">
+                <div class="item-opening">
+                  <div class="tag">
+                    <div class="bold">Sunday</div>
+                    <div>CLOSED</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- section three -->
+    <section id="about" class="py-12" style="background-color: #fdfaf2">
+      <div class="page-container height-100">
+        <div class="bg-[#8b0304] rounded-3xl p-8 md:p-12">
+          <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div class="space-y-6">
+              <h2
+                class="menu-item text-6xl md:text-7xl  uppercase"
+                style="color: #FFF7E1">
+                From Kitchen <br/>to Bottle
+              </h2>
+
+              <div class="space-y-4">
+                <div
+                  class="menu-item h-1 w-24 rounded"
+                  style="background-color: #8b0304"></div>
+                <div
+                  class="menu-item h-1 w-32 rounded"
+                  style="background-color: #f0e6e6"></div>
+              </div>
+
+              <p
+                class="menu-item text-lsm md:text-md leading-relaxed"
+                style="color: #FFF7E1">
+                Fueled by a deep love for all things spicy, Chef Jones started
+                his pepper sauce empire right in his home kitchen. What began as
+                a personal quest to create the perfect fiery concoction soon
+                exploded into a local sensation. His distinctive sauces,
+                bursting with flavor and just the right amount of heat, quickly
+                gained a loyal following at local events and BBQs.
+              </p>
+
+              <button
+                class="menu-item text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors inline-flex items-center space-x-2"
+                style="background-color: #8b0304">
+                <span>Learn more</span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 17L17 7M17 7H7M17 7V17"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="menu-item">
+              <div class="relative">
+                <img
+                src="https://res.cloudinary.com/do5wpgk5o/image/upload/v1751565135/Original_size_Untitled_4_assuus.png"
+                  alt="marinade bottle"
+                  class="w-full object-cover " />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </section>
+
+  <!--Marquee Section -->
+  <section class="custom-marquee-section" id="marquee-section">
+    <!-- Row 1: VIEW ✸ VIEW ... -->
+    <div class="custom-marquee-row">
+      <div class="custom-marquee-track marquee-left">
+        <span class="custom-marquee-text">JOJO YOUR FLAVOR</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">JOJO YOUR FLAVOR</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">JOJO YOUR FLAVOR</span>   
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">JOJO YOUR FLAVOR</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">JOJO YOUR FLAVOR</span>
+        <span class="custom-marquee-star">✸</span>
+    
+      </div>
+    </div>
+    <!-- Row 2: :NU ✸ MENU ... -->
+    <div class="custom-marquee-row">
+      <div class="custom-marquee-track marquee-right">
+        <span class="custom-marquee-text">FIERY</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">SAUCE</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">FIERY</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">SAUCE</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">FIERY</span>
+        <span class="custom-marquee-star">✸</span>
+        <span class="custom-marquee-text">SAUCE</span>
+        <span class="custom-marquee-star">✸</span>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <!-- Products Section -->
+  <section id="products" class="py-12" style="background-color: #fdfaf2">
+    <div class="page-container height-100">
+      <div class="bg-[#8b0304] rounded-3xl p-8 md:p-12">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="text-left mb-16">
+          <h2 class="text-4xl md:text-6xl font-black text-white mb-6 uppercase">
+            Discover <br/>
+            our products
+          </h2>
+       
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div class="menu-item group">
+            <div class="bg-gray-50 rounded-xl p-6 transition-transform duration-300 hover:scale-105">
+              <div class="aspect-square mb-4">
+                <img
+                  src="https://res.cloudinary.com/do5wpgk5o/image/upload/v1751565135/Original_size_Untitled_4_assuus.png"
+                  alt="Product 1"
+                  class="w-full h-full object-contain rounded-xl" />
+              </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">FIERY SAUCE</h3>
+                <p class="text-sm text-gray-600 mb-4">text here</p>
+                <button class="bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+            </div>
+
+          <div class="menu-item group">
+            <div class="bg-gray-50 rounded-xl p-6 transition-transform duration-300 hover:scale-105">
+              <div class="aspect-square mb-4">
+                <img
+                  src="https://res.cloudinary.com/do5wpgk5o/image/upload/e_background_removal/f_png/v1751480143/1_uyryga.png"
+                  alt="Product 2"
+                  class="w-full h-full object-contain rounded-xl" />
+              </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Pepper Sauce</h3>
+                <p class="text-sm text-gray-600 mb-4">text here</p>
+                <button class="bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item group">
+            <div class="bg-gray-50 rounded-xl p-6 transition-transform duration-300 hover:scale-105">
+              <div class="aspect-square mb-4">
+                <img
+                  src="https://res.cloudinary.com/do5wpgk5o/image/upload/v1751565135/Original_size_Untitled_4_assuus.png"
+                  alt="Product 3"
+                  class="w-full h-full object-contain rounded-xl" />
+              </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">SPICY MARINADE</h3>
+                <p class="text-sm text-gray-600 mb-4">text goes here </p>
+                <button class="bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item group">
+            <div class="bg-gray-50 rounded-xl p-6 transition-transform duration-300 hover:scale-105">
+              <div class="aspect-square mb-4">
+                <img
+                  src="https://res.cloudinary.com/do5wpgk5o/image/upload/e_background_removal/f_png/v1751480143/1_uyryga.png"
+                  alt="Product 4"
+                  class="w-full h-full object-contain rounded-xl" />
+              </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">ORIGINAL MARINADE</h3>
+                <p class="text-sm text-gray-600 text here t</p>
+                <button class="bg-white text-red-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="home" class="hero-bg">
+    <div class="page-container">
+ 
+      <div class="hero-container min-h-[50vh] flex items-end ">
+        <div
+          class="content-wrapper w-full p-8 flex flex-col justify-between items-start"
+        >
+    <!-- Footer Section -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Column 1: Information -->
+    <div class="footer-column info-column">
+      <h3 class="footer-heading">Information</h3>
+      <p><a href="tel:+1123456789">+1 123 456 789</a></p>
+      <p><a href="mailto:info@jojosfiery.com">info@jojosfiery.com</a></p>
+      <p>Newark, New Jersey<br>United States</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook" class="social-icon">
+          <!-- Replace [FB] with your SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-icon">
+          <!-- Replace [IG] with your SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Center Content -->
+    <div class="footer-column center-column">
+      <p class="tagline">Fired up and ready to go!</p>
+      <a href="#" class="menu-button">
+       Contact
+        <span class="arrow">
+            <!-- Replace -> with your SVG arrow icon -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Column 3: Navigation -->
+    <div class="footer-column nav-column">
+      <h3 class="footer-heading">Navigation</h3>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+       
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Contact</a></li>
+  
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Marquee Section for "JOJOS" or other text -->
+<div class="marquee ">
+  <div class="marquee-content">
+  
+      <span class="custom-marquee-text">JOJOS * PEPPER SAUCE</span>
+      <span class="custom-marquee-text">JOJOS * PEPPER SAUCE</span>
+      <span class="custom-marquee-text">JOJOS * PEPPER SAUCE</span>
+      <span class="custom-marquee-text">JOJOS * PEPPER SAUCE</span>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <script src="script.js"></script>
+    <script>
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Text color fade on scroll
+      ScrollTrigger.create({
+          trigger: "#marquee-section",
+          start: "top 80%",
+          end: "bottom 20%",
+          onEnter: () => {
+              document.getElementById('marquee-section').classList.add('scrolled');
+          },
+          onLeave: () => {
+              document.getElementById('marquee-section').classList.remove('scrolled');
+          },
+          onEnterBack: () => {
+              document.getElementById('marquee-section').classList.add('scrolled');
+          },
+          onLeaveBack: () => {
+              document.getElementById('marquee-section').classList.remove('scrolled');
+          }
+      });
+  </script>
+  </body>
+</html>
