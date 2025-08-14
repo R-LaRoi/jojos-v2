@@ -177,29 +177,48 @@ document.addEventListener("DOMContentLoaded", function () {
       ".tag-hour-6",
       ".tag-hour-7",
     ];
-
+  
+    // Animate tags on scroll with staggered entrance
     tags.forEach((tag, index) => {
       gsap.fromTo(
         tag,
-        { y: 100, opacity: 0, rotation: 0 },
+        { 
+          y: 100, 
+          opacity: 0, 
+          rotation: 0,
+          scale: 0.8
+        },
         {
           y: 0,
           opacity: 1,
-          rotation: Math.random() * 10 - 5,
-          duration: 1,
-          delay: index * 0.1,
-          ease: "power2.out",
-          // Temporarily comment out the scrollTrigger to test
-          // scrollTrigger: {
-          //   trigger: ".about-home",
-          //   start: "top 80%",
-          //   end: "bottom 20%",
-          //   toggleActions: "play none none reverse",
-          // },
+          rotation: Math.random() * 15 - 7.5, // More dramatic rotation
+          scale: 1,
+          duration: 1.2,
+          delay: index * 0.15, // Increased stagger delay
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".about-home",
+            start: "top 70%",
+            end: "bottom 30%",
+            toggleActions: "play none none reverse",
+            scrub: false
+          },
         }
       );
     });
-
+  
+    // Continuous floating animation for tags
+    tags.forEach((tag, index) => {
+      gsap.to(tag, {
+        y: "+=20",
+        duration: 2 + index * 0.3,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: index * 0.2
+      });
+    });
+  
     // Image scale animation
     gsap.to(".image", {
       scale: 1.1,
@@ -208,6 +227,34 @@ document.addEventListener("DOMContentLoaded", function () {
       repeat: -1,
       yoyo: true,
     });
+  
+    // Word staggering animation for video title
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about-home",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    })
+    .to(".word-1", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.7)"
+    })
+    .to(".word-2", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.7)"
+    }, "-=0.4")
+    .to(".word-3", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.7)"
+    }, "-=0.4");
   }
 
   // Call the functions to initialize animations and cart

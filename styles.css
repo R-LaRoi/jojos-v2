@@ -69,12 +69,13 @@
 
 /* Responsive font size for title */
 #kreme-title {
+  font-size: clamp(6rem, 20vw, 20rem); /* Much larger font size */
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.09em;
   font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
     sans-serif;
-  transform: scaleX(0.95);
+  transform: scaleX(0.95) translate(-50%, -50%); /* Added translate for proper centering */
   text-align: center;
   position: absolute;
   top: 50%;
@@ -161,7 +162,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
   z-index: 2;
 }
 
@@ -198,6 +199,8 @@
   position: absolute;
   opacity: 0;
   transform: translateY(100px);
+  color: #8b0304;
+  line-height: 0.9;
 }
 
 .tag-hour-1 {
@@ -275,10 +278,12 @@
   min-height: 400px;
   justify-content: center;
   transition: background-color 0.7s;
+  width: 100%; /* Add this */
+  max-width: 100vw; /* Add this */
 }
 
 .custom-marquee-row {
-  width: 100vw;
+  width: 100%; /* Change from 100vw to 100% */
   display: flex;
   align-items: center;
   height: 180px;
@@ -347,8 +352,11 @@
 /* ---- Footer Styling ---- */
 .site-footer {
   color: var(--text-color);
-  padding: 80px 40px;
+  padding: 40px 20px; /* Reduce padding on mobile */
   font-family: var(--brand-font);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .footer-container {
@@ -358,6 +366,83 @@
   grid-template-columns: 1fr 2fr 1fr;
   gap: 40px;
   align-items: start;
+  width: 100%;
+  padding: 0 20px; /* Add padding */
+}
+
+/* ---- Footer Marquee Styling ---- */
+.marquee {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
+    sans-serif;
+  padding: 20px; /* Reduce padding */
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--text-color);
+  width: 100%;
+  max-width: 100vw; /* Add this */
+  box-sizing: border-box;
+}
+
+/* Add animation for footer marquee */
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  animation: footer-marquee-scroll 60s linear infinite;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #8b0304;
+  white-space: nowrap;
+}
+
+.marquee-content .custom-marquee-text {
+  color: #8b0304;
+}
+
+.marquee-content .custom-marquee-star {
+  color: #8b0304;
+  font-size: calc(2.5rem * 0.8);
+}
+
+/* Footer marquee animation keyframes */
+@keyframes footer-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments for footer marquee */
+@media (max-width: 768px) {
+  .marquee {
+    padding: 15px 10px;
+  }
+
+  .marquee-content {
+    font-size: 2rem;
+    animation: footer-marquee-scroll 45s linear infinite;
+  }
+
+  .marquee-content .custom-marquee-star {
+    font-size: calc(2rem * 0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee {
+    padding: 10px 5px;
+  }
+
+  .marquee-content {
+    font-size: 1.5rem;
+    animation: footer-marquee-scroll 30s linear infinite;
+  }
+
+  .marquee-content .custom-marquee-star {
+    font-size: calc(1.5rem * 0.8);
+  }
 }
 
 .footer-column {
@@ -484,6 +569,7 @@
     grid-template-columns: 1fr;
     text-align: center;
     gap: 30px;
+    padding: 0 15px; /* Reduce padding further */
   }
 
   .nav-column,
@@ -496,96 +582,68 @@
     justify-content: center;
   }
 
-  /* Responsive adjustments for other elements */
-  .custom-marquee-row {
-    height: 100%;
-  }
-  .custom-marquee-text,
-  .custom-marquee-star {
-    font-size: var(--custom-marquee-size-mobile);
-  }
-  .custom-marquee-track {
-    gap: 2rem;
-  }
+  /* Responsive adjustments for marquee */
   .custom-marquee-section {
+    padding: 2rem 0; /* Reduce padding */
     min-height: 250px;
     gap: 1rem;
   }
 
-  .list-hours.desktop {
-    display: none;
+  .custom-marquee-row {
+    height: 120px; /* Reduce height */
   }
 
-  .content-wrapper {
-    height: 70vh;
+  .custom-marquee-text,
+  .custom-marquee-star {
+    font-size: var(--custom-marquee-size-mobile);
   }
 
-  .hero-container {
-    min-height: 80vh;
-  }
-
-  /* Make responsive adjustments for tags */
-  .tag {
-    padding: 0.75rem 1rem;
-    min-width: 100px;
-  }
-
-  .day-name {
-    font-size: 1rem;
-  }
-
-  .hours {
-    font-size: 0.8rem;
-  }
-}
-
-/* ---- Footer Marquee Styling ---- */
-.marquee {
-  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
-    sans-serif;
-  padding: 20px 40px;
-  overflow: hidden;
-  white-space: nowrap;
-  border-top: 1px solid var(--text-color);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.marquee-content {
-  display: inline-block;
-  height: 100%;
-  font-weight: 700;
-  font-size: 4rem;
-  color: var(--text-color);
-  animation: scroll 20s linear infinite;
-  transform: translateX(0);
-}
-
-.marquee-content span {
-  margin-right: 50px;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* ---- Additional Mobile Responsive Adjustments ---- */
-@media (max-width: 768px) {
-  .tagline {
-    font-size: 1.5rem;
+  .custom-marquee-track {
+    gap: 2rem;
   }
 
   .marquee {
-    padding: 20px;
+    padding: 15px 10px; /* Further reduce padding */
   }
 
   .marquee-content {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Smaller font size */
+  }
+
+  .site-footer {
+    padding: 30px 15px; /* Reduce footer padding */
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+  }
+}
+
+/* Additional mobile breakpoint for very small screens */
+@media (max-width: 480px) {
+  .custom-marquee-section {
+    padding: 1.5rem 0;
+    min-height: 200px;
+  }
+
+  .custom-marquee-row {
+    height: 100px;
+  }
+
+  .marquee {
+    padding: 10px 5px;
+  }
+
+  .marquee-content {
+    font-size: 1.5rem;
+  }
+
+  .site-footer {
+    padding: 20px 10px;
+  }
+
+  .footer-container {
+    padding: 0 10px;
   }
 }
 
@@ -638,6 +696,8 @@
   transform: translate(-50%, -50%);
   z-index: 4;
   text-align: center;
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
+    sans-serif;
 }
 
 .video-title {
@@ -648,4 +708,24 @@
   color: #ebe6d6;
   margin: 0;
   line-height: 1;
+}
+
+.video-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal,
+    sans-serif;
+}
+
+.word-1 {
+  margin-right: 0.2em;
+}
+
+.word-2 {
+  margin-right: 0.2em;
+}
+
+.word-3 {
+  margin-right: 0;
 }
